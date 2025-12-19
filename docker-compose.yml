@@ -1,0 +1,34 @@
+services:
+  api:
+    build: .
+    environment:
+      APP_ENV: prod
+      REDIS_URL: redis://redis:6379/0
+      DATABASE_URL: postgresql+asyncpg://cassiopeia:cassiopeia@db:5432/cassiopeia
+      RATE_LIMIT_RPS: "5"
+      RATE_LIMIT_BURST: "10"
+      EXTERNAL_TIMEOUT_S: "4"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - db
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: cassiopeia
+      POSTGRES_PASSWORD: cassiopeia
+      POSTGRES_DB: cassiopeia
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
