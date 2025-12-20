@@ -1,6 +1,3 @@
-# Cassiopeia Practice #3 (Python implementation)
-
-Этот репозиторий — **полноценная Python-реализация требований из "Практическая работа №3"**:
 - **Pascal-Legacy** переписан на Python: генерация CSV с типами (timestamp, ИСТИНА/ЛОЖЬ, числа, текст), визуализация CSV как таблицы, экспорт в **.xlsx** с подстановкой значений даты/времени.
 - **Backend в Docker**: FastAPI сервис с **Rate-Limit**, **Redis** (кэш/лимитер), валидацией через отдельные классы (Pydantic), слоистой структурой `routes/ handlers/ services/ clients/ repo/ domain/ config/`.
 - **Диаграммы/блок-схемы** в `docs/` (Mermaid).
